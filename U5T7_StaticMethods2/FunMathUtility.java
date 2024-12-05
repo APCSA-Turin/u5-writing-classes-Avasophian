@@ -1,19 +1,7 @@
 public class FunMathUtility 
 {
     private FunMathUtility(){}
-
-    public static boolean isPrime(int num)
-    {
-        for (int i = 2; i < num; i++)
-        {
-            if (num % i == 0)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
+    
     public static boolean isEven(int num)
     {
         if (num % 2 == 0)
@@ -65,7 +53,7 @@ public class FunMathUtility
         return false;
     }
 
-    public static int nextinFibonacci(int num)
+    public static int nextInFibonacci(int num)
     {
         int temp;
         int precedingNum = 0;
@@ -79,19 +67,24 @@ public class FunMathUtility
         return num + precedingNum;
     }
 
-    public static int previnFibonacci(int num)
+    public static int prevInFibonacci(int num)
     {
-        int temp;
-        int precedingNum = 0;
-        int i = 1;
-        while (i < num)
+        if (isInFibonacci(num)) //A
         {
-            temp = precedingNum;
-            precedingNum = i;
-            i = temp + i;
-        }  
-        return precedingNum;
+            int temp; 
+            int precedingNum = 0;
+            int i = 1;
+            while (i < num)
+            {
+                temp = precedingNum;
+                precedingNum = i;
+                i = temp + i;
+            }  
+            return precedingNum;
+        }
+        return 0;
     }
+
 
     private static int factorial(int num) 
     // i already coded way too many things on this i'm sorry
@@ -105,13 +98,12 @@ public class FunMathUtility
 
     private static int binomialCombination(int num, int num2)
     {       
-        int x = factorial(num - num2) * factorial(num2);
-        return factorial(num) / x;
-    }
+        int x = factorial(num - num2) * factorial(num2); //A
+        return factorial(num) / x; //A
+    } 
 
     public static String expandedBinomial(int y, int exponent)
     {
-        System.out.println("your polynomial: (x" + " + " + y + ")" + "^" + exponent);
         String expandedBinomial = "";
         expandedBinomial += "x^" + exponent;
         int i = exponent - 1;
@@ -119,7 +111,7 @@ public class FunMathUtility
         int placeholderNum = 0;
         while (i > 0)
         {
-            placeholderNum = binomialCombination(exponent, j);
+            placeholderNum = binomialCombination(exponent, j); //A
             placeholderNum *= Math.pow(y, j);
             if (i == 1)
             {
